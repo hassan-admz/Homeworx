@@ -77,12 +77,15 @@ class HomeController: UIViewController {
             button.setTitleColor(.white, for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.heightAnchor.constraint(equalToConstant: 100).isActive = true
-            button.setBackgroundImage(images[imageNum].withTintColor(.darkGray).withAlpha(0.1), for: .normal)
+            button.setBackgroundImage(images[imageNum].darkened(), for: .normal)
+            button.clipsToBounds = true
             stackView.addArrangedSubview(button)
             imageNum += 1
         }
     }
 }
+
+let man = UIView()
 
 
 struct HomeViewController_Previews: PreviewProvider {
