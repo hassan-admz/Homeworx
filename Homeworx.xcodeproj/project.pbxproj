@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE7B5DC72A56C53700F0CE4B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B5DC62A56C53700F0CE4B /* UIViewExtension.swift */; };
 		CE7B5DC92A56DA9400F0CE4B /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B5DC82A56DA9400F0CE4B /* UIImageExtension.swift */; };
+		CE808F892A5C64AB004CB5B5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE808F882A5C64AB004CB5B5 /* UIColorExtension.swift */; };
 		CE8DB7102A50652A00AF73C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8DB70F2A50652A00AF73C1 /* AppDelegate.swift */; };
 		CE8DB7122A50652A00AF73C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8DB7112A50652A00AF73C1 /* SceneDelegate.swift */; };
 		CE8DB7142A50652A00AF73C1 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8DB7132A50652A00AF73C1 /* MainTabController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		CE7B5DC62A56C53700F0CE4B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		CE7B5DC82A56DA9400F0CE4B /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		CE808F882A5C64AB004CB5B5 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		CE8DB70C2A50652A00AF73C1 /* Homeworx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homeworx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8DB70F2A50652A00AF73C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE8DB7112A50652A00AF73C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,10 +87,11 @@
 			children = (
 				CE8DB70F2A50652A00AF73C1 /* AppDelegate.swift */,
 				CE8DB7112A50652A00AF73C1 /* SceneDelegate.swift */,
-				CE8DB7182A50652C00AF73C1 /* Assets.xcassets */,
-				CE8DB71A2A50652C00AF73C1 /* LaunchScreen.storyboard */,
 				CE7B5DC62A56C53700F0CE4B /* UIViewExtension.swift */,
 				CE7B5DC82A56DA9400F0CE4B /* UIImageExtension.swift */,
+				CE808F882A5C64AB004CB5B5 /* UIColorExtension.swift */,
+				CE8DB7182A50652C00AF73C1 /* Assets.xcassets */,
+				CE8DB71A2A50652C00AF73C1 /* LaunchScreen.storyboard */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				CE8DB72D2A506CB200AF73C1 /* PostServicesController.swift in Sources */,
 				CE9D45412A512418000B1518 /* ServicesButton.swift in Sources */,
 				CE8DB7312A50713000AF73C1 /* ProfileController.swift in Sources */,
+				CE808F892A5C64AB004CB5B5 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

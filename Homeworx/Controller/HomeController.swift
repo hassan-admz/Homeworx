@@ -2,7 +2,7 @@
 //  HomeController.swift
 //  Homeworx
 //
-//  Created by user on 1/7/23.
+//  Created by Hassan Mayers on 1/7/23.
 //
 
 import UIKit
@@ -38,11 +38,7 @@ class HomeController: UIViewController {
     }
     
     func setScrollViewConstraints() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        scrollView.anchor(top: view.safeAreaLayoutGuide.topAnchor,left: view.safeAreaLayoutGuide.leftAnchor,bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor,paddingTop: 5, paddingLeft: 20, paddingBottom: 5, paddingRight: 20)
     }
     
     func configureStackView() {
@@ -52,19 +48,11 @@ class HomeController: UIViewController {
         stackView.spacing = 18
         setStackViewConstraints()
         addButtonsToStackView()
-
     }
     
     func setStackViewConstraints() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        stackView.anchor(top: scrollView.topAnchor, left: scrollView.leftAnchor, bottom: scrollView.bottomAnchor, right: scrollView.rightAnchor, widthNS: scrollView.widthAnchor)
     }
-    
-    let man = UIImage()
     
     func addButtonsToStackView() {
         let buttonTitle = ["AC Repair","Plumbing","Electrical","Appliance Repair","Cleaning","Painting","Moving"]
@@ -75,8 +63,7 @@ class HomeController: UIViewController {
             button.setTitle("\(title)", for: .normal)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             button.setTitleColor(.white, for: .normal)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            button.anchor(height: 100)
             button.setBackgroundImage(images[imageNum].darkened(), for: .normal)
             button.clipsToBounds = true
             stackView.addArrangedSubview(button)
@@ -85,18 +72,3 @@ class HomeController: UIViewController {
     }
 }
 
-let man = UIView()
-
-
-struct HomeViewController_Previews: PreviewProvider {
-  static var previews: some View {
-    Container().edgesIgnoringSafeArea(.all)
-  }
-  struct Container: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
-      UINavigationController(rootViewController: HomeController())
-    }
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
-    typealias UIViewControllerType = UIViewController
-  }
-}
