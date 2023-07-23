@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class HomeController: UIViewController {
     
@@ -24,10 +23,13 @@ class HomeController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureUI()
+    }
+    
+    func configureUI() {
         view.backgroundColor = .white
-        
         self.navigationItem.title = "Services"
+        addMessageButton()
         configureScrollView()
     }
     
@@ -69,6 +71,17 @@ class HomeController: UIViewController {
             stackView.addArrangedSubview(button)
             imageNum += 1
         }
+    }
+    
+    func addMessageButton() {
+//        let msgBtn = UIButton(type: .system)
+//        msgBtn.setBackgroundImage(UIImage(systemName: "message"), for: .normal)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "message"), style: .plain, target: self, action: #selector(didTapMessageButton))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+    }
+    
+    @objc func didTapMessageButton() {
+        print("Tapped!")
     }
 }
 

@@ -7,6 +7,57 @@
 
 import UIKit
 
+extension UIButton {
+    func setLoginOrSignUp(title: String) {
+        clipsToBounds = true
+        layer.cornerRadius = 5
+        setTitleColor(.white, for: .normal)
+        setTitle(title, for: .normal)
+        backgroundColor = .twitterBlue
+    }
+}
+
+extension UIButton {
+    func attributedTitle(firstText: String, secondText: String) {
+        let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 0, alpha: 0.8), .font: UIFont.systemFont(ofSize: 15)]
+        let attributedTitle = NSMutableAttributedString(string: "\(firstText) ", attributes: atts)
+        let boldAtts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 0, alpha: 0.8), .font: UIFont.boldSystemFont(ofSize: 15)]
+        attributedTitle.append(NSAttributedString(string: "\(secondText)", attributes: boldAtts))
+        setAttributedTitle(attributedTitle, for: .normal)
+    }
+}
+
+extension UIColor {
+    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
+    }
+    
+    static let twitterBlue = UIColor.rgb(red: 29, green: 161, blue: 242)
+    static let disabledButtonBlue = UIColor.rgb(red: 192, green: 222, blue: 237)
+}
+
+extension UIImage {
+    func darkened() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        defer { UIGraphicsEndImageContext() }
+
+        guard let ctx = UIGraphicsGetCurrentContext(), let cgImage = cgImage else {
+            return nil
+        }
+
+        // flip the image, or result appears flipped
+        ctx.scaleBy(x: 1.0, y: -1.0)
+        ctx.translateBy(x: 0, y: -size.height)
+
+        let rect = CGRect(origin: .zero, size: size)
+        ctx.draw(cgImage, in: rect)
+        UIColor(white: 0, alpha: 0.5).setFill()
+        ctx.fill(rect)
+
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}
+
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                     left: NSLayoutXAxisAnchor? = nil,
@@ -88,3 +139,5 @@ extension UIView {
                    bottom: view.bottomAnchor, right: view.rightAnchor)
         }
 }
+
+
