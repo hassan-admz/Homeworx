@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegistrationController: UIViewController {
+class RegistrationController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     // MARK: - UI Properties
     
@@ -15,6 +15,9 @@ class RegistrationController: UIViewController {
         let btn = UIButton(type: .system)
         btn.setBackgroundImage(UIImage(systemName: "person.crop.circle", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 20, weight: .ultraLight))), for: .normal)
         btn.tintColor = UIColor(white: 0, alpha: 0.8)
+        btn.clipsToBounds = true
+        btn.contentMode = .scaleAspectFit
+        btn.addTarget(self, action: #selector(selectPhoto), for: .touchUpInside)
         return btn
     }()
     
@@ -33,9 +36,11 @@ class RegistrationController: UIViewController {
         return tf
     }()
     
-    private let signUpButton: UIButton = {
+    private var signUpButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setLoginOrSignUp(title: "Sign Up")
+        btn.backgroundColor = .disabledButtonBlue
+        btn.isEnabled = false
         return btn
     }()
     
@@ -62,6 +67,12 @@ class RegistrationController: UIViewController {
             viewModel.password = sender.text
         }
         checkFormValidation()
+    }
+    
+    @objc func selectPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true)
     }
     
     // MARK: - Lifecycle
@@ -138,5 +149,14 @@ class RegistrationController: UIViewController {
             signUpButton.isEnabled = false
             signUpButton.backgroundColor = .disabledButtonBlue
         }
+    }
+}
+
+extension RegistrationController {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        selectProfilePicButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        selectProfilePicButton.layer.cornerRadius = 150 / 2
+        dismiss(animated: true)
     }
 }
