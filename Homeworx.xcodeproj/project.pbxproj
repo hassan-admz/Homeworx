@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB1C1F303DC49205A064C764 /* Pods_Homeworx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049F9B2D5DDF6129EF3FB890 /* Pods_Homeworx.framework */; };
 		CE7B5DC72A56C53700F0CE4B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B5DC62A56C53700F0CE4B /* Extensions.swift */; };
 		CE8DB7102A50652A00AF73C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8DB70F2A50652A00AF73C1 /* AppDelegate.swift */; };
 		CE8DB7122A50652A00AF73C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8DB7112A50652A00AF73C1 /* SceneDelegate.swift */; };
@@ -18,6 +19,7 @@
 		CE8DB72D2A506CB200AF73C1 /* PostServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8DB72C2A506CB200AF73C1 /* PostServicesController.swift */; };
 		CE8DB72F2A5070B700AF73C1 /* SavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8DB72E2A5070B700AF73C1 /* SavedController.swift */; };
 		CE8DB7312A50713000AF73C1 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8DB7302A50713000AF73C1 /* ProfileController.swift */; };
+		CE90AA4A2A7E05C8009D390D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE90AA492A7E05C8009D390D /* GoogleService-Info.plist */; };
 		CE9ADC9E2A5D9137007AAB33 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9ADC9D2A5D9137007AAB33 /* LoginController.swift */; };
 		CE9ADCA02A5D9158007AAB33 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9ADC9F2A5D9158007AAB33 /* RegistrationController.swift */; };
 		CE9ADCA22A5EC067007AAB33 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9ADCA12A5EC067007AAB33 /* CustomTextField.swift */; };
@@ -27,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		049F9B2D5DDF6129EF3FB890 /* Pods_Homeworx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Homeworx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		461B7CFC00C42680FEE8156F /* Pods-Homeworx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Homeworx.release.xcconfig"; path = "Target Support Files/Pods-Homeworx/Pods-Homeworx.release.xcconfig"; sourceTree = "<group>"; };
+		5667543C4E8A0C1908FF212A /* Pods-Homeworx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Homeworx.debug.xcconfig"; path = "Target Support Files/Pods-Homeworx/Pods-Homeworx.debug.xcconfig"; sourceTree = "<group>"; };
 		CE7B5DC62A56C53700F0CE4B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CE8DB70C2A50652A00AF73C1 /* Homeworx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homeworx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8DB70F2A50652A00AF73C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +45,7 @@
 		CE8DB72C2A506CB200AF73C1 /* PostServicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostServicesController.swift; sourceTree = "<group>"; };
 		CE8DB72E2A5070B700AF73C1 /* SavedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedController.swift; sourceTree = "<group>"; };
 		CE8DB7302A50713000AF73C1 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		CE90AA492A7E05C8009D390D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CE9ADC9D2A5D9137007AAB33 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		CE9ADC9F2A5D9158007AAB33 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		CE9ADCA12A5EC067007AAB33 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -53,17 +59,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB1C1F303DC49205A064C764 /* Pods_Homeworx.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6532C774923884F2C8E9E36C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				049F9B2D5DDF6129EF3FB890 /* Pods_Homeworx.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		903C475AC52111012007A6B7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5667543C4E8A0C1908FF212A /* Pods-Homeworx.debug.xcconfig */,
+				461B7CFC00C42680FEE8156F /* Pods-Homeworx.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CE8DB7032A50652900AF73C1 = {
 			isa = PBXGroup;
 			children = (
 				CE8DB70E2A50652A00AF73C1 /* Homeworx */,
 				CE8DB70D2A50652A00AF73C1 /* Products */,
+				903C475AC52111012007A6B7 /* Pods */,
+				6532C774923884F2C8E9E36C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +111,7 @@
 				CE8DB7242A50695D00AF73C1 /* Controller */,
 				CE8DB7232A5068CC00AF73C1 /* Utils */,
 				CE8DB71D2A50652C00AF73C1 /* Info.plist */,
+				CE90AA492A7E05C8009D390D /* GoogleService-Info.plist */,
 			);
 			path = Homeworx;
 			sourceTree = "<group>";
@@ -155,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE8DB7202A50652C00AF73C1 /* Build configuration list for PBXNativeTarget "Homeworx" */;
 			buildPhases = (
+				A53981A2177F42B1AC84EB90 /* [CP] Check Pods Manifest.lock */,
 				CE8DB7082A50652A00AF73C1 /* Sources */,
 				CE8DB7092A50652A00AF73C1 /* Frameworks */,
 				CE8DB70A2A50652A00AF73C1 /* Resources */,
+				1D2DBDB53189497D437248D8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,10 +238,53 @@
 			files = (
 				CE8DB71C2A50652C00AF73C1 /* LaunchScreen.storyboard in Resources */,
 				CE8DB7192A50652C00AF73C1 /* Assets.xcassets in Resources */,
+				CE90AA4A2A7E05C8009D390D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D2DBDB53189497D437248D8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Homeworx/Pods-Homeworx-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Homeworx/Pods-Homeworx-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Homeworx/Pods-Homeworx-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A53981A2177F42B1AC84EB90 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Homeworx-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE8DB7082A50652A00AF73C1 /* Sources */ = {
@@ -366,6 +439,7 @@
 		};
 		CE8DB7212A50652C00AF73C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5667543C4E8A0C1908FF212A /* Pods-Homeworx.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -373,6 +447,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Homeworx/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Homeworx;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -392,6 +467,7 @@
 		};
 		CE8DB7222A50652C00AF73C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 461B7CFC00C42680FEE8156F /* Pods-Homeworx.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -399,6 +475,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Homeworx/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Homeworx;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
