@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     // MARK: - UI Properties
+    
+    private var viewModel = RegistrationViewModel()
+    private var profileImage: UIImage?
     
     private let selectProfilePicButton: UIButton = {
         let btn = UIButton(type: .system)
@@ -21,18 +25,28 @@ class RegistrationController: UIViewController, UIImagePickerControllerDelegate 
         return btn
     }()
     
+    private let usernameTextField: UITextField = {
+        let tf = CustomTextField(placeholder: "Username")
+        
+        return tf
+    }()
+    
     private let fullNameTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "Fullname")
+        
         return tf
     }()
     
     private let emailTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "Email")
+        
         return tf
     }()
     
     private let passwordTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "Password")
+        
+        tf.isSecureTextEntry = true
         return tf
     }()
     
@@ -41,6 +55,7 @@ class RegistrationController: UIViewController, UIImagePickerControllerDelegate 
         btn.setLoginOrSignUp(title: "Sign Up")
         btn.backgroundColor = .disabledButtonBlue
         btn.isEnabled = false
+        btn.addTarget(self, action: #selector(userDidSignUp), for: .touchUpInside)
         return btn
     }()
     
@@ -63,8 +78,10 @@ class RegistrationController: UIViewController, UIImagePickerControllerDelegate 
             viewModel.fullName = sender.text
         } else if sender == emailTextField {
             viewModel.email = sender.text
-        } else {
+        } else if sender == passwordTextField {
             viewModel.password = sender.text
+        } else {
+            viewModel.username = sender.text
         }
         checkFormValidation()
     }
@@ -75,6 +92,55 @@ class RegistrationController: UIViewController, UIImagePickerControllerDelegate 
         present(imagePickerController, animated: true)
     }
     
+    @objc func userDidSignUp() {
+        guard let profileImage = profileImage else { return }
+        guard let username = usernameTextField.text?.lowercased() else { return }
+        guard let fullname = fullNameTextField.text else { return }
+        guard let email    = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        
+        let filename = NSUUID().uuidString
+        let ref = Storage.storage().reference(withPath: "/profile_images/\(filename)")
+        
+        ref.putData(imageData, metadata: nil) {(meta, error) in
+            if let error = error {
+                print("DEBUG: Failed to upload image with error \(error.localizedDescription)")
+                return
+            }
+            
+            ref.downloadURL { (url, error) in
+                guard let profileImageURL = url?.absoluteString else { return }
+                
+                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                    if let error = error {
+                        print("DEBUG: Failed to create user with error: \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    guard let uid = result?.user.uid else { return }
+                    
+                    let data = ["email": email,
+                                "fullname": fullname,
+                                "profileImageURL": profileImageURL,
+                                "uid": uid,
+                                "username": username] as [String: Any]
+                    
+                    Firestore.firestore().collection("users").document(uid).setData(data) { error in
+                        
+                        if let error = error {
+                            print("DEBUG: Failed to upload user data with error: \(error.localizedDescription)")
+                            return
+                        }
+                        self.dismiss(animated: true)
+                        print("DEBUG: Did create user...")
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -83,9 +149,12 @@ class RegistrationController: UIViewController, UIImagePickerControllerDelegate 
         configureUI()
     }
     
+    // MARK: - UI AutoLayout Functions
+    
     func configureUI() {
         view.backgroundColor = .white
         setupSelectProfilePicButton()
+        setupUsernameTextField()
         setupFullNameTextField()
         setupEmailTextField()
         setupPasswordTextField()
@@ -100,11 +169,19 @@ class RegistrationController: UIViewController, UIImagePickerControllerDelegate 
         selectProfilePicButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 18)
     }
     
+    func setupUsernameTextField() {
+        view.addSubview(usernameTextField)
+        usernameTextField.centerX(inView: view)
+        usernameTextField.setDimensions(width: 320, height: 50)
+        usernameTextField.anchor(top: selectProfilePicButton.bottomAnchor, paddingTop: 15)
+        usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
     func setupFullNameTextField() {
         view.addSubview(fullNameTextField)
         fullNameTextField.centerX(inView: view)
         fullNameTextField.setDimensions(width: 320, height: 50)
-        fullNameTextField.anchor(top: selectProfilePicButton.bottomAnchor, paddingTop: 15)
+        fullNameTextField.anchor(top: usernameTextField.bottomAnchor, paddingTop: 14)
         fullNameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
@@ -138,9 +215,12 @@ class RegistrationController: UIViewController, UIImagePickerControllerDelegate 
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingTop: 0)
     }
     
+    // MARK: - Helper Functions
+    
+    
+    
     // Usage of Form Validation View Model
     
-    var viewModel = RegistrationViewModel()
     func checkFormValidation() {
         if viewModel.formIsValid {
             signUpButton.isEnabled = true
@@ -155,6 +235,7 @@ class RegistrationController: UIViewController, UIImagePickerControllerDelegate 
 extension RegistrationController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
+        profileImage = image
         selectProfilePicButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         selectProfilePicButton.layer.cornerRadius = 150 / 2
         dismiss(animated: true)

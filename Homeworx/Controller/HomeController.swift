@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeController: UIViewController {
     
@@ -24,7 +25,41 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        authenticateUser()
     }
+    
+    // MARK: - API
+    
+    func authenticateUser() {
+        if Auth.auth().currentUser?.uid == nil {
+            print("DEBUG: User is NOT logged in. Present login screen here.")
+            presentLoginScreen()
+        } else {
+            print("DEBUG: User IS logged in. Configure HomeController.")
+        }
+    }
+    
+    // MARK: - Actions
+    
+    func presentLoginScreen() {
+        DispatchQueue.main.async {
+            let controller = LoginController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
+        }
+    }
+    
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            presentLoginScreen()
+        } catch {
+            print("DEBUG: Error signing out..")
+        }
+    }
+    
+    // MARK: - UI Components
     
     func configureUI() {
         view.backgroundColor = .white
@@ -76,12 +111,19 @@ class HomeController: UIViewController {
     func addMessageButton() {
 //        let msgBtn = UIButton(type: .system)
 //        msgBtn.setBackgroundImage(UIImage(systemName: "message"), for: .normal)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "message"), style: .plain, target: self, action: #selector(didTapMessageButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "message"), style: .plain, target: self, action: #selector(logUserOut))
         navigationItem.rightBarButtonItem?.tintColor = .black
+        
     }
+    
+    // MARK: - Selectors
     
     @objc func didTapMessageButton() {
         print("Tapped!")
+    }
+    
+    @objc func logUserOut() {
+        logout()
     }
 }
 

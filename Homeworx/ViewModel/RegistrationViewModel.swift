@@ -8,12 +8,14 @@
 import Foundation
 
 struct RegistrationViewModel {
+    var username: String?
     var fullName: String?
     var email: String?
     var password: String?
     
     var formIsValid: Bool {
-        return fullName?.isEmpty == false
+        return username?.isEmpty == false
+        && fullName?.isEmpty == false
         && email?.isEmpty == false
         && password?.isEmpty == false
     }

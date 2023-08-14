@@ -18,6 +18,9 @@ class CustomTextField: UITextField {
         layer.cornerRadius = 5
         clipsToBounds = true
         textColor = .black
+        autocorrectionType = .no
+        autocapitalizationType = .none
+        spellCheckingType = .no
         keyboardAppearance = .default
         keyboardType = .emailAddress
         attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor(white: 0.5, alpha: 0.5)])

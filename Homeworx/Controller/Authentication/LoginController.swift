@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController {
     
@@ -25,6 +26,7 @@ class LoginController: UIViewController {
     
     private let passwordTxtFld: CustomTextField = {
         let tf = CustomTextField(placeholder: "Password")
+        tf.isSecureTextEntry = true
         return tf
     }()
     
@@ -33,6 +35,7 @@ class LoginController: UIViewController {
         btn.setLoginOrSignUp(title: "Log In")
         btn.backgroundColor = .disabledButtonBlue
         btn.isEnabled = false
+        btn.addTarget(self, action: #selector(logUserIn), for: .touchUpInside)
         return btn
     }()
     
@@ -57,6 +60,20 @@ class LoginController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    
+    @objc func logUserIn() {
+        guard let email = emailTxtFld.text else { return }
+        guard let password = passwordTxtFld.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("DEBUG: Failed to log in with error \(error.localizedDescription)")
+            }
+            self.dismiss(animated: true)
+            print("DEBUG: User login successful.")
+        }
+    }
     
     @objc func didTapSignUp() {
         let controller = RegistrationController()
