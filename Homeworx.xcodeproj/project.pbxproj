@@ -24,6 +24,7 @@
 		CE9ADCA02A5D9158007AAB33 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9ADC9F2A5D9158007AAB33 /* RegistrationController.swift */; };
 		CE9ADCA22A5EC067007AAB33 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9ADCA12A5EC067007AAB33 /* CustomTextField.swift */; };
 		CE9D45412A512418000B1518 /* ServicesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D45402A512418000B1518 /* ServicesButton.swift */; };
+		CEA1A25F2A8BC30100B7ED8F /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA1A25E2A8BC30100B7ED8F /* MessageController.swift */; };
 		CEBFE5F12A6BC18D008F8C3A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBFE5F02A6BC18D008F8C3A /* LoginViewModel.swift */; };
 		CEBFE5F32A6BD753008F8C3A /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBFE5F22A6BD753008F8C3A /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		CE9ADC9F2A5D9158007AAB33 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		CE9ADCA12A5EC067007AAB33 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		CE9D45402A512418000B1518 /* ServicesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesButton.swift; sourceTree = "<group>"; };
+		CEA1A25E2A8BC30100B7ED8F /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		CEBFE5F02A6BC18D008F8C3A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CEBFE5F22A6BD753008F8C3A /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,7 +82,6 @@
 				5667543C4E8A0C1908FF212A /* Pods-Homeworx.debug.xcconfig */,
 				461B7CFC00C42680FEE8156F /* Pods-Homeworx.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -138,6 +139,7 @@
 				CE8DB72C2A506CB200AF73C1 /* PostServicesController.swift */,
 				CE8DB72E2A5070B700AF73C1 /* SavedController.swift */,
 				CE8DB7302A50713000AF73C1 /* ProfileController.swift */,
+				CEA1A25E2A8BC30100B7ED8F /* MessageController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -302,6 +304,7 @@
 				CE8DB7102A50652A00AF73C1 /* AppDelegate.swift in Sources */,
 				CE8DB7122A50652A00AF73C1 /* SceneDelegate.swift in Sources */,
 				CEBFE5F32A6BD753008F8C3A /* RegistrationViewModel.swift in Sources */,
+				CEA1A25F2A8BC30100B7ED8F /* MessageController.swift in Sources */,
 				CE8DB72D2A506CB200AF73C1 /* PostServicesController.swift in Sources */,
 				CE9D45412A512418000B1518 /* ServicesButton.swift in Sources */,
 				CE8DB7312A50713000AF73C1 /* ProfileController.swift in Sources */,
