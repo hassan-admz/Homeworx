@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 extension UIButton {
     func setLoginOrSignUp(title: String) {
@@ -140,4 +141,48 @@ extension UIView {
         }
 }
 
+extension UIViewController {
+    
+    public static let hud = JGProgressHUD(style: .dark)
+    
+    func showLoader(_ show: Bool, withText text: String? = "Loading") {
+        view.endEditing(true)
+        UIViewController.hud.textLabel.text = text
+        
+        if show == true {
+            UIViewController.hud.show(in: view)
+            
+        } else {
+            UIViewController.hud.dismiss()
+        }
+    }
+    
+    func showLoginLoader(_ show: Bool, _ successful: Bool, withText text: String? = "Loading") {
+        view.endEditing(true)
+        UIViewController.hud.textLabel.text = text
+        
+        if show && successful == true {
+            UIViewController.hud.show(in: view)
+            UIViewController.hud.dismiss(afterDelay: 3)
+        } else if show && !successful {
+            UIViewController.hud.show(in: view)
+            UIViewController.hud.textLabel.text = "Error Logging in"
+            UIViewController.hud.dismiss(afterDelay: 3)
+        }
+    }
+    
+    func showRegistrationLoader(_ show: Bool, _ successful: Bool, withText text: String? = "Loading") {
+        view.endEditing(true)
+        UIViewController.hud.textLabel.text = text
+        
+        if show && successful == true {
+            UIViewController.hud.show(in: view)
+            UIViewController.hud.dismiss(afterDelay: 3)
+        } else if show && !successful {
+            UIViewController.hud.show(in: view)
+            UIViewController.hud.textLabel.text = "Error Signing up"
+            UIViewController.hud.dismiss(afterDelay: 3)
+        }
+    }
+}
 

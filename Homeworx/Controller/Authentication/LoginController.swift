@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class LoginController: UIViewController {
     
@@ -66,12 +67,22 @@ class LoginController: UIViewController {
         guard let email = emailTxtFld.text else { return }
         guard let password = passwordTxtFld.text else { return }
         
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print("DEBUG: Failed to log in with error \(error.localizedDescription)")
+        showLoader(true, withText: "Logging in")
+        
+        AuthService.shared.logInUser(withEmail: email, password: password) { result, error in
+            
+            guard error == nil else {
+                self.showLoader(false)
+                self.resetLoginScreen()
+                self.showLoginErrorAlert()
+//                self.presentRegistrationScreen()
+                print("Error creating user")
+                return
             }
+            self.showLoader(false)
             self.dismiss(animated: true)
-            print("DEBUG: User login successful.")
+//            let user = theResult.user
+            print("Logged in user")
         }
     }
     
@@ -145,6 +156,29 @@ class LoginController: UIViewController {
         signUpBtn.setDimensions(width: 250, height: 50)
         signUpBtn.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 0)
     }
+    
+    func presentRegistrationScreen() {
+            DispatchQueue.main.async {
+                let controller = RegistrationController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
+            }
+        }
+    
+    func resetLoginScreen() {
+        emailTxtFld.text = ""
+        passwordTxtFld.text = ""
+        loginBtn.backgroundColor = .disabledButtonBlue
+        loginBtn.isEnabled = false
+    }
+    
+    func showLoginErrorAlert() {
+        let alert = UIAlertController(title: "Sign In Error", message: "Unable to sign in. Please verify your email and/or password and try again", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+        self.present(alert, animated: true)
+    }
+    
     var viewModel = LoginViewModel()
     func checkFormStatus() {
         if viewModel.formIsValid {
