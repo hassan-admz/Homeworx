@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileHeader: UIView {
+class ProfileHeaderView: UIView {
     
     // MARK: - Properties
     
@@ -18,13 +18,14 @@ class ProfileHeader: UIView {
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 70
         iv.layer.borderWidth = 3
-        iv.layer.borderColor = UIColor.black.cgColor
+        iv.layer.borderColor = UIColor.white.cgColor
         return iv
     }()
     
     private let usernameLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Iylia110"
+        lbl.textColor = .white
         lbl.font = UIFont.boldSystemFont(ofSize: 25)
         return lbl
     }()
@@ -51,7 +52,7 @@ class ProfileHeader: UIView {
         addSubview(profileImage)
         profileImage.centerX(inView: self)
         profileImage.setDimensions(width: 140, height: 140)
-        profileImage.anchor(top: safeAreaLayoutGuide.topAnchor, paddingTop: 0)
+        profileImage.anchor(top: safeAreaLayoutGuide.topAnchor, paddingTop: 10)
     }
     
     func setupUsernameLabel() {
