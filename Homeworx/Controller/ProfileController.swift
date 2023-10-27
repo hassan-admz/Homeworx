@@ -11,7 +11,7 @@ import Firebase
 class ProfileController: UITableViewController {
     
     // MARK: - Properties
-    
+    private var user: User?
     private lazy var headerView = ProfileHeaderView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 300))
     private lazy var footerView = ProfileFooterView()
     private let reuseIdentifier = "reuseIdentifier"
@@ -25,8 +25,8 @@ class ProfileController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureUI()
+        fetchUser()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -36,7 +36,12 @@ class ProfileController: UITableViewController {
     // MARK: - API
     
     func fetchUser() {
-        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        print("\(uid)")
+        Service.fetchUser(withUid: uid) { user in
+            self.user = user
+            print("The username of the current user is: \(user.username)")
+        }
     }
     
     // MARK: - Helpers
