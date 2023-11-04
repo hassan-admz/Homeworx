@@ -11,14 +11,18 @@ import Firebase
 class ProfileController: UITableViewController {
     
     // MARK: - Properties
-    private var user: User?
+    private var user: User? {
+        didSet {
+            headerView.user = user
+        }
+    }
     private lazy var headerView = ProfileHeaderView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 300))
     private lazy var footerView = ProfileFooterView()
     private let reuseIdentifier = "reuseIdentifier"
     private let cellData = [
-        ("Fullname", "Iylia Mayers"),
-        ("Email", "iy.nurliyana@gmail.com"),
-        ("Password","Mahdi313")
+        ("Fullname", ""),
+        ("Email", ""),
+        ("Password", "")
     ]
     
     // MARK: - Lifecycle
@@ -26,7 +30,7 @@ class ProfileController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        fetchUser()
+        fetchUser2()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -41,6 +45,15 @@ class ProfileController: UITableViewController {
         Service.fetchUser(withUid: uid) { user in
             self.user = user
             print("The username of the current user is: \(user.username)")
+            self.tableView.reloadData()
+        }
+    }
+    
+    func fetchUser2() {
+        Service.fetchUserData { user in
+            self.user = user
+            print("DEBUG: Username of user is \(user.username)")
+            self.tableView.reloadData()
         }
     }
     
@@ -136,15 +149,25 @@ extension ProfileController {
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellData.count
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ProfileTableViewCell
-        let (title, subtitle) = cellData[indexPath.row]
+        //let (title, _) = cellData[indexPath.row]
         
-        cell.titleLabel.text = title
-        cell.subtitleLabel.text = subtitle
+        switch indexPath.row {
+        case 0:
+            cell.titleLabel.text = "Fullname"
+            cell.subtitleLabel.text = user?.fullname
+        case 1:
+            cell.titleLabel.text = "Email"
+            cell.subtitleLabel.text = user?.email
+//        case 2:
+//            cell.titleLabel.text = "Password"
+        default:
+            break
+        }
         
         return cell
     }

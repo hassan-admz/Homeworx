@@ -59,7 +59,7 @@ class ProfileFooterView: UIView {
     func setupDeleteAccountButton() {
         addSubview(deleteAccountButton)
         deleteAccountButton.centerX(inView: self)
-        deleteAccountButton.anchor(top: logoutButton.bottomAnchor, paddingTop: 150)
+        deleteAccountButton.anchor(top: logoutButton.bottomAnchor, paddingTop: 160)
     }
     
     func getLogoutButton() -> UIButton {

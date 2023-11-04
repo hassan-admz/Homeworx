@@ -28,25 +28,21 @@ class RegistrationController: UIViewController, UIImagePickerControllerDelegate 
     
     private let usernameTextField: UITextField = {
         let tf = CustomTextField(placeholder: "Username")
-        
         return tf
     }()
     
     private let fullNameTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "Fullname")
-        
         return tf
     }()
     
     private let emailTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "Email")
-        
         return tf
     }()
     
     private let passwordTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "Password")
-        
         tf.isSecureTextEntry = true
         return tf
     }()
@@ -137,7 +133,6 @@ class RegistrationController: UIViewController, UIImagePickerControllerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureUI()
     }
     

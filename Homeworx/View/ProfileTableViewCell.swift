@@ -8,6 +8,12 @@
 import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
+    
+    var user: User? {
+        didSet {
+            configure()
+        }
+    }
 
     var titleLabel = UILabel()
     var subtitleLabel = UILabel()
@@ -40,4 +46,11 @@ class ProfileTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Helpers
+    
+    func configure() {
+        guard let user = user else { return }
+        subtitleLabel.text = user.fullname
+        subtitleLabel.text = user.email
+    }
 }

@@ -6,14 +6,21 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileHeaderView: UIView {
     
     // MARK: - Properties
     
+    var user: User? {
+        didSet {
+            populateUserData()
+        }
+    }
+    
     private let profileImage: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "Iylia")
+        iv.image = UIImage(named: "")
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 70
@@ -24,7 +31,7 @@ class ProfileHeaderView: UIView {
     
     private let usernameLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Iylia110"
+        lbl.text = ""
         lbl.textColor = .white
         lbl.font = UIFont.boldSystemFont(ofSize: 25)
         return lbl
@@ -52,12 +59,21 @@ class ProfileHeaderView: UIView {
         addSubview(profileImage)
         profileImage.centerX(inView: self)
         profileImage.setDimensions(width: 140, height: 140)
-        profileImage.anchor(top: safeAreaLayoutGuide.topAnchor, paddingTop: 10)
+        profileImage.anchor(top: topAnchor, paddingTop: 80)
     }
     
     func setupUsernameLabel() {
         addSubview(usernameLabel)
         usernameLabel.centerX(inView: self)
         usernameLabel.anchor(top: profileImage.bottomAnchor, paddingTop: 20)
+    }
+    
+    func populateUserData() {
+        guard let user = user else { return }
+        guard let url = URL(string: user.profileImageURL) else { return }
+        
+        usernameLabel.text = user.username
+        profileImage.sd_setImage(with: url)
+        
     }
 }
