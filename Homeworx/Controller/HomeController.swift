@@ -10,9 +10,9 @@ import Firebase
 
 class HomeController: UIViewController {
     
-    var stackView = UIStackView()
-    var scrollView = UIScrollView()
-    var images: [UIImage] = [
+    lazy var stackView = UIStackView()
+    lazy var scrollView = UIScrollView()
+    lazy var images: [UIImage] = [
         UIImage(named: "ac-repair")!,
         UIImage(named: "plumbing")!,
         UIImage(named: "electrical")!,
@@ -96,12 +96,12 @@ class HomeController: UIViewController {
         var imageNum = 0
 
         for title in buttonTitle {
-            let button = ServicesButton()
+            lazy var button = ServicesButton()
             button.setTitle("\(title)", for: .normal)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             button.setTitleColor(.white, for: .normal)
             button.anchor(height: 100)
-            button.setBackgroundImage(images[imageNum].darkened(), for: .normal)
+            button.setBackgroundImage(images[imageNum].darkened()?.compressed(quality: 0.0), for: .normal)
             button.clipsToBounds = true
             stackView.addArrangedSubview(button)
             imageNum += 1

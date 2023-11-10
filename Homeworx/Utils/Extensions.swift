@@ -57,6 +57,11 @@ extension UIImage {
 
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+    
+    func compressed(quality: CGFloat) -> UIImage? {
+            guard let data = self.jpegData(compressionQuality: quality) else { return nil }
+            return UIImage(data: data)
+        }
 }
 
 extension UIView {
