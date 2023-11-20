@@ -34,6 +34,9 @@
 		CEBFE5F12A6BC18D008F8C3A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBFE5F02A6BC18D008F8C3A /* LoginViewModel.swift */; };
 		CEBFE5F32A6BD753008F8C3A /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBFE5F22A6BD753008F8C3A /* RegistrationViewModel.swift */; };
 		CEE4DE4A2ACC0A8E00D732F0 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE4DE492ACC0A8E00D732F0 /* ProfileTableViewCell.swift */; };
+		CEEF1B4E2B076FF6006A5EF7 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF1B4D2B076FF6006A5EF7 /* ChatController.swift */; };
+		CEEF1B502B077423006A5EF7 /* FreelancerServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF1B4F2B077423006A5EF7 /* FreelancerServicesController.swift */; };
+		CEEF1B522B077481006A5EF7 /* FreelancerProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF1B512B077481006A5EF7 /* FreelancerProfileController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		CEBFE5F02A6BC18D008F8C3A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CEBFE5F22A6BD753008F8C3A /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		CEE4DE492ACC0A8E00D732F0 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		CEEF1B4D2B076FF6006A5EF7 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		CEEF1B4F2B077423006A5EF7 /* FreelancerServicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerServicesController.swift; sourceTree = "<group>"; };
+		CEEF1B512B077481006A5EF7 /* FreelancerProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerProfileController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,9 @@
 				CE8DB72E2A5070B700AF73C1 /* SavedController.swift */,
 				CE8DB7302A50713000AF73C1 /* ProfileController.swift */,
 				CEA1A25E2A8BC30100B7ED8F /* MessageController.swift */,
+				CEEF1B4D2B076FF6006A5EF7 /* ChatController.swift */,
+				CEEF1B4F2B077423006A5EF7 /* FreelancerServicesController.swift */,
+				CEEF1B512B077481006A5EF7 /* FreelancerProfileController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -333,9 +342,12 @@
 				CE9ADC9E2A5D9137007AAB33 /* LoginController.swift in Sources */,
 				CE8DB72F2A5070B700AF73C1 /* SavedController.swift in Sources */,
 				CEBFE5F12A6BC18D008F8C3A /* LoginViewModel.swift in Sources */,
+				CEEF1B4E2B076FF6006A5EF7 /* ChatController.swift in Sources */,
 				CEB736DD2AEB28210044F81A /* User.swift in Sources */,
 				CE8DB7142A50652A00AF73C1 /* MainTabController.swift in Sources */,
+				CEEF1B502B077423006A5EF7 /* FreelancerServicesController.swift in Sources */,
 				CE8DB7102A50652A00AF73C1 /* AppDelegate.swift in Sources */,
+				CEEF1B522B077481006A5EF7 /* FreelancerProfileController.swift in Sources */,
 				CE8DB7122A50652A00AF73C1 /* SceneDelegate.swift in Sources */,
 				CE89BA702A99F49300769F08 /* ProfileHeaderView.swift in Sources */,
 				CEE4DE4A2ACC0A8E00D732F0 /* ProfileTableViewCell.swift in Sources */,

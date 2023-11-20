@@ -50,6 +50,15 @@ class HomeController: UIViewController {
         }
     }
     
+    func presentMessagesScreen() {
+        DispatchQueue.main.async {
+            let controller = MessageController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
+        }
+    }
+    
     func logout() {
         do {
             try Auth.auth().signOut()
@@ -111,7 +120,7 @@ class HomeController: UIViewController {
     func addMessageButton() {
 //        let msgBtn = UIButton(type: .system)
 //        msgBtn.setBackgroundImage(UIImage(systemName: "message"), for: .normal)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "message"), style: .plain, target: self, action: #selector(logUserOut))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "message"), style: .plain, target: self, action: #selector(didTapMessageButton))
         navigationItem.rightBarButtonItem?.tintColor = .black
         
     }
@@ -119,6 +128,7 @@ class HomeController: UIViewController {
     // MARK: - Selectors
     
     @objc func didTapMessageButton() {
+        presentMessagesScreen()
         print("Tapped!")
     }
     

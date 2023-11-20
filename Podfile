@@ -12,5 +12,7 @@ target 'Homeworx' do
 	pod 'Firebase/Firestore'
 	pod 'SDWebImage','~>4.4.2'
 	pod 'JGProgressHUD'
+	pod 'MessageKit'
+	pod 'RealmSwift'
 
 end

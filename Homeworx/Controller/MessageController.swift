@@ -20,12 +20,18 @@ class MessageController: UIViewController {
         configureUI()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
+    }
+    
     // MARK: - UI Components
     
     func configureUI() {
         view.backgroundColor = .white
         configureNavigationBar()
         configureTableView()
+        fetchConversations()
     }
     
     func configureNavigationBar() {
@@ -56,13 +62,36 @@ class MessageController: UIViewController {
         tableView.tableFooterView = .none
         tableView.rowHeight = 80
         tableView.frame = view.frame
+        tableView.isHidden = true
         
         view.addSubview(tableView)
+        view.addSubview(noConversationsLabel)
+    }
+    
+    private let noConversationsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No Converations!"
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 21, weight: .medium)
+        label.textColor = .gray
+        label.isHidden = true
+        return label
+    }()
+    
+    // MARK: - API
+    
+    func fetchConversations() {
+        tableView.isHidden = false
     }
 }
 
 extension MessageController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = ChatController()
+        vc.title = "Marco DeLeon"
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
         print(indexPath.row)
     }
 }
